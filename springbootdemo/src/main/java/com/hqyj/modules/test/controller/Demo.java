@@ -7,42 +7,42 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.hqyj.modules.test.pojo.Users;
 
-@Controller
+//@RestController=@ResponseBody+@Controller
+@RestController
+@RequestMapping("/api/test")
 public class Demo {
 	
 	/**
-	 * http://127.0.0.1/test/users
+	 * http://127.0.0.1/api/test/users
 	 * @return
 	 */
 	@Autowired
 	private Users users;
-	@RequestMapping("test/users")
-	@ResponseBody
+	@RequestMapping("/users")
 	public Users getUsers(){
 		return users;
 	}
 	
 	
 	/**
-	 * https://127.0.0.1/test/ssl
+	 * https://127.0.0.1/api/test/ssl
 	 * @return
 	 */
-	@RequestMapping("test/ssl")
-	@ResponseBody
+	@RequestMapping("/ssl")
 	public String ssl(){
 		return "ssl test";
 	}
 	
 	/**
-	 * http://127.0.0.1/test/log
+	 * http://127.0.0.1/api/test/log
 	 * @return
 	 */
 	private final static Logger LOGGER=LoggerFactory.getLogger(Demo.class);
-	@RequestMapping("test/log")
-	@ResponseBody
+	@RequestMapping("/log")
 	public String log(){
 		//level: TRACE<DEBUG<INFO<WARN<ERROR
 		LOGGER.trace("this is trace");
@@ -54,7 +54,7 @@ public class Demo {
 	}
 	
 	/**
-	 * http://127.0.0.1/test/demo1
+	 * http://127.0.0.1/api/test/demo1
 	 * @return
 	 */
 	@Value("${com.hqyj.name}")
@@ -63,18 +63,17 @@ public class Demo {
 	private int age;
 	@Value("${com.hqyj.user}")
 	private String user;
-	@RequestMapping("test/demo1")
+	@RequestMapping("/demo1")
 	@ResponseBody
 	public String demo1(){
 		
 		return "name="+name+"-->age="+age+"-->user="+user;
 	}
 	/**
-	 * http://127.0.0.1/test/demo
+	 * http://127.0.0.1/api/test/demo
 	 * @return
 	 */
-	@RequestMapping("test/demo")
-	@ResponseBody
+	@RequestMapping("/demo")
 	public String demo(){
 		return "hello spring boot";
 	}
