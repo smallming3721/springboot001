@@ -7,28 +7,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.pagehelper.PageInfo;
 import com.hqyj.modules.test.pojo.Country;
 import com.hqyj.modules.test.service.CountryService;
 
 @RestController
-@RequestMapping("/api/country")
+@RequestMapping("/api")
 public class CountryController {
 	@Autowired
 	private CountryService countryServiceImpl;
 
 	/**
-	 * http://127.0.0.1/api/country/getCountryById/522
+	 * http://127.0.0.1/api/country/getCountryByCountryId/522
 	 */
-	@RequestMapping("/getCountryById/{countryId}")
-	public List<Country> getCountry(@PathVariable int countryId){
-		return countryServiceImpl.selCountryById(countryId);
+	@RequestMapping("/country/getCountryByCountryId/{countryId}")
+	public Country getCountryByCountryId(@PathVariable int countryId){
+		return countryServiceImpl.selCountryByCountryId(countryId);
 	}
 	
 	/**
-	 * http://127.0.0.1/api/country/getCountryByName/China
+	 * http://127.0.0.1/api/country/getCountryByCountryName/China
 	 */
-	@RequestMapping("/getCountryByName/{countryName}")
-	public List<Country> getCountry(@PathVariable String countryName){
-		return countryServiceImpl.selCountryByName(countryName);
+	@RequestMapping("/country/getCountryByCountryName/{countryName}")
+	public Country getCountryByCountryName(@PathVariable String countryName){
+		return countryServiceImpl.selCountryByCountryName(countryName);
 	}
+	
+
 }

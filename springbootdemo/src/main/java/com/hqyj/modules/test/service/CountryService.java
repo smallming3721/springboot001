@@ -2,12 +2,16 @@ package com.hqyj.modules.test.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
 import com.hqyj.modules.test.pojo.Country;
 
 public interface CountryService {
 
-	List<Country> selCountryById(int countryId);
+	Country selCountryByCountryId(int countryId);
 	
 	
-	List<Country> selCountryByName(String countryName);
+	Country selCountryByCountryName(String countryName);
+	
+	
+	
 }

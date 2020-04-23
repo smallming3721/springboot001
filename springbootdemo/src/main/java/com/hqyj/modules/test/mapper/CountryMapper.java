@@ -18,12 +18,14 @@ public interface CountryMapper {
 	@Results(id="myCountry",value={
 			@Result(column="country_id",property="countryId"),
 			@Result(column="country_id",property="cities",
-				many=@Many(select="com.hqyj.modules.test.mapper.CityMapper.selCityById"))
+				many=@Many(select="com.hqyj.modules.test.mapper.CityMapper.selCitiesByCountryId"))
 			})
-	List<Country> selCountryById(int countryId);
+	Country selCountryByCountryId(int countryId);
 	
 	
 	@Select("select * from m_country where country_name=#{countryName}")
 	@ResultMap("myCountry")
-	List<Country> selCountryByName(String countryName);
+	Country selCountryByCountryName(String countryName);
+	
+	
 }
