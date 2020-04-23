@@ -18,7 +18,6 @@ public class WebServerConfig {
 	@Bean
 	public Connector connector(){
 		Connector connector = new Connector();
-		System.out.println("123332211");
 		connector.setScheme("http");
 		connector.setPort(port);
 		return connector;
