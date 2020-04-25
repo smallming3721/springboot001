@@ -3,8 +3,12 @@ package com.hqyj.modules.test.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,21 +37,48 @@ public class CityController {
 	
 	/**
 	 * http://127.0.0.1/api/cities/getPageCitiesByCountryId?currentPage=1&pageSize=20&countryId=522
+	 * @RequestAttribute 写不写都一样吧（默认）
 	 */
 	@RequestMapping("/cities/getPageCitiesByCountryId")
 	public PageInfo<City> getPageCitiesByCountryId
-		(int currentPage,int pageSize,int countryId){
+		(@RequestAttribute int currentPage,int pageSize,int countryId){
 		
 		return cityServiceImpl.selPageCitiesByCountryId(currentPage, pageSize, countryId);
 	}
+	/**
+	 * http://127.0.0.1/api/city?cityName=test1&localCityName=localtest
+	 */
+	@RequestMapping("/city")
+	public City getCityByName(String cityName, String localCityName){
+		return cityServiceImpl.selCityByName(cityName, localCityName);
+	}
 	
 	/**
-	 * http://127.0.0.1/api/insCity
+	 * http://127.0.0.1/api/city
 	 * {"cityId":"1","cityName":"test1","countryId":"522"}
 	 */
-	@PostMapping(value="/insCity", consumes="application/json")
+	@PostMapping(value="/city", consumes="application/json")
 	public MyResult<City> insCity(@RequestBody City city){
 		return cityServiceImpl.insCity(city);
 	}
+	
+	
+	/**
+	 * http://127.0.0.1/api/city
+	 * @ModelAttribute （默认？？）不写也能接受参数？？？
+	 */
+	@PutMapping(value="/city",consumes="application/x-www-form-urlencoded")
+	public  MyResult<City> updCity(City city){
+		return cityServiceImpl.updCity(city);
+	}
+	
+	/**
+	 * http://127.0.0.1/api/city/2261
+	 */
+	@DeleteMapping(value="/city/{cityId}")
+	public  MyResult<Object> delCity(@PathVariable int cityId){
+		return cityServiceImpl.delCity(cityId);
+	}
+	
 	
 }

@@ -12,9 +12,15 @@ public interface CityService {
 	
 	List<City> selCitiesByCountryId(int countryId);
 	
+	City selCityByName(String cityName,String localCityName);
+	
+	
 	PageInfo<City> selPageCitiesByCountryId
 		(int currentPage,int pageSize,int countryId);
 	
-	
 	MyResult<City> insCity(City city);
+	
+	MyResult<City> updCity(City city);
+	
+	MyResult<Object> delCity(int cityId);
 }
