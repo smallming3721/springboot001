@@ -73,6 +73,15 @@ public class CityController {
 	}
 	
 	/**
+	 * http://127.0.0.1/api/city/test
+	 * 测试用的，post接收参数修改数据
+	 */
+	@PostMapping("/city/test")
+	public  MyResult<City> updCitytest(City city){
+		return cityServiceImpl.updCity(city);
+	}
+	
+	/**
 	 * http://127.0.0.1/api/city/2261
 	 */
 	@DeleteMapping(value="/city/{cityId}")

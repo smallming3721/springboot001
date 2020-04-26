@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hqyj.common.MyResult;
-import com.hqyj.common.MyResult.MyEnum;
+import com.hqyj.common.MyResult.ResultEnum;
 import com.hqyj.modules.test.mapper.ResourceMapper;
 import com.hqyj.modules.test.mapper.ResourceMapper;
 import com.hqyj.modules.test.pojo.Resource;
@@ -33,9 +33,9 @@ public class ResourceServiceImpl implements ResourceService {
 		MyResult<Resource> result=null;
 		try{
 			resourceMapper.insResource(resource);
-			result=new MyResult<Resource>(MyEnum.SUCCESS.status,"insert success",resource);
+			result=new MyResult<Resource>(ResultEnum.SUCCESS.status,"insert success",resource);
 		}catch(Exception e){
-			result=new MyResult<Resource>(MyEnum.FAILD.status,e.getMessage());
+			result=new MyResult<Resource>(ResultEnum.FAILD.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return result;
@@ -46,9 +46,9 @@ public class ResourceServiceImpl implements ResourceService {
 		MyResult<Resource> result=null;
 		try{
 			resourceMapper.updResource(resource);
-			result=new MyResult<Resource>(MyEnum.SUCCESS.status,"update success",resource);
+			result=new MyResult<Resource>(ResultEnum.SUCCESS.status,"update success",resource);
 		}catch(Exception e){
-			result=new MyResult<Resource>(MyEnum.FAILD.status,e.getMessage());
+			result=new MyResult<Resource>(ResultEnum.FAILD.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return result;
@@ -59,9 +59,9 @@ public class ResourceServiceImpl implements ResourceService {
 		MyResult<Object> result=null;
 		try{
 			resourceMapper.delResource(resourceId);
-			result=new MyResult<Object>(MyEnum.SUCCESS.status,"delete success");
+			result=new MyResult<Object>(ResultEnum.SUCCESS.status,"delete success");
 		}catch(Exception e){
-			result=new MyResult<Object>(MyEnum.FAILD.status,e.getMessage());
+			result=new MyResult<Object>(ResultEnum.FAILD.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return result;

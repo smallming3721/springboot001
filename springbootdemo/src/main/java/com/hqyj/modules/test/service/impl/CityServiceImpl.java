@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hqyj.common.MyResult;
-import com.hqyj.common.MyResult.MyEnum;
+import com.hqyj.common.MyResult.ResultEnum;
 import com.hqyj.modules.test.mapper.CityMapper;
 import com.hqyj.modules.test.pojo.City;
 import com.hqyj.modules.test.service.CityService;
@@ -44,9 +44,9 @@ public class CityServiceImpl implements CityService {
 		MyResult<City> mr=null;
 		try{
 			cityMapper.insCity(city);
-			mr=new MyResult<City>(MyEnum.SUCCESS.status,"insert success!!",city);
+			mr=new MyResult<City>(ResultEnum.SUCCESS.status,"insert success!!",city);
 		}catch(Exception e){
-			mr=new MyResult<City>(MyEnum.FAILD.status,e.getMessage());
+			mr=new MyResult<City>(ResultEnum.FAILD.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return mr;
@@ -57,9 +57,9 @@ public class CityServiceImpl implements CityService {
 		MyResult<City> mr=null;
 		try{
 			cityMapper.updCity(city);
-			mr=new MyResult<City>(MyEnum.SUCCESS.status,"update success!!",city);
+			mr=new MyResult<City>(ResultEnum.SUCCESS.status,"update success!!",city);
 		}catch(Exception e){
-			mr=new MyResult<City>(MyEnum.FAILD.status,e.getMessage());
+			mr=new MyResult<City>(ResultEnum.FAILD.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return mr;
@@ -68,7 +68,7 @@ public class CityServiceImpl implements CityService {
 	@Override
 	@Transactional(noRollbackFor=ArithmeticException.class)
 	public MyResult<Object> delCity(int cityId) {
-		MyResult<Object> mr=new MyResult<Object>(MyEnum.SUCCESS.status,"delete success!!");
+		MyResult<Object> mr=new MyResult<Object>(ResultEnum.SUCCESS.status,"delete success!!");
 		cityMapper.delCity(cityId);
 		//int i=1/0;
 		return mr;

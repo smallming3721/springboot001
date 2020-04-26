@@ -38,11 +38,11 @@ public class MyResult<T> {
 		this.object = object;
 	}
 	
-	public enum MyEnum{
+	public enum ResultEnum{
 		SUCCESS(200),FAILD(500);
 		public int status;
 
-		private MyEnum(int status) {
+		private ResultEnum(int status) {
 			this.status = status;
 		}
 	}

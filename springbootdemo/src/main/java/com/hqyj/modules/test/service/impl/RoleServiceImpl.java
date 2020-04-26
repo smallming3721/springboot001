@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hqyj.common.MyResult;
-import com.hqyj.common.MyResult.MyEnum;
+import com.hqyj.common.MyResult.ResultEnum;
 import com.hqyj.modules.test.mapper.RoleMapper;
 import com.hqyj.modules.test.pojo.Role;
 import com.hqyj.modules.test.service.RoleService;
@@ -31,9 +31,9 @@ public class RoleServiceImpl implements RoleService {
 		MyResult<Role> result=null;
 		try{
 			roleMapper.insRole(role);
-			result=new MyResult<Role>(MyEnum.SUCCESS.status,"insert success",role);
+			result=new MyResult<Role>(ResultEnum.SUCCESS.status,"insert success",role);
 		}catch(Exception e){
-			result=new MyResult<Role>(MyEnum.FAILD.status,e.getMessage());
+			result=new MyResult<Role>(ResultEnum.FAILD.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return result;
@@ -44,9 +44,9 @@ public class RoleServiceImpl implements RoleService {
 		MyResult<Role> result=null;
 		try{
 			roleMapper.updRole(role);
-			result=new MyResult<Role>(MyEnum.SUCCESS.status,"update success",role);
+			result=new MyResult<Role>(ResultEnum.SUCCESS.status,"update success",role);
 		}catch(Exception e){
-			result=new MyResult<Role>(MyEnum.FAILD.status,e.getMessage());
+			result=new MyResult<Role>(ResultEnum.FAILD.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return result;
@@ -57,9 +57,9 @@ public class RoleServiceImpl implements RoleService {
 		MyResult<Object> result=null;
 		try{
 			roleMapper.delRole(roleId);
-			result=new MyResult<Object>(MyEnum.SUCCESS.status,"delete success");
+			result=new MyResult<Object>(ResultEnum.SUCCESS.status,"delete success");
 		}catch(Exception e){
-			result=new MyResult<Object>(MyEnum.FAILD.status,e.getMessage());
+			result=new MyResult<Object>(ResultEnum.FAILD.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return result;
