@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
+import org.apache.commons.lang3.StringUtils;
+
 @WebFilter(filterName="myFilter",value="/**")
 public class MyFilter implements Filter {
 
@@ -24,7 +26,7 @@ public class MyFilter implements Filter {
 			@Override
 			public String getParameter(String name) {
 				String value = req.getParameter(name);
-				if (value != null && value != "") {
+				if (StringUtils.isNotBlank(value)) {
 					value=value.replaceAll("fuck", "****");
 					return value;
 				}

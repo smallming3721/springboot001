@@ -3,7 +3,9 @@ package com.hqyj.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.commons.CommonsFileUploadSupport;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,10 +22,12 @@ public class MyInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		//TODO
+		if(modelAndView==null||modelAndView.getViewName().startsWith("redirect")){
+			return;
+		}
 		String uri = request.getServletPath();
 		String string = (String) modelAndView.getModelMap().get("template");
-		if(string==null||string==""){
+		if(StringUtils.isBlank(string)){
 			if(uri.startsWith("/")){
 				uri=uri.substring(1);
 			}

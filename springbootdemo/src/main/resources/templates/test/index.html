@@ -3,6 +3,26 @@
 	this is test index.
 	<p>----------------------------</p>
 	
+	<p>==================================================================</p>
+	<h3>file upload and downlod</h3>
+	<a href="/test/download?fileName=ssm.log">download file</a>
+	<a href="/test/download2?fileName=ssm.log">download file</a>
+	<br>
+	<p>==================================================================</p>
+	<p th:text="${message}"></p>
+	<!--  enctype="multipart/form-data" -->
+	<form action="/test/upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="file"/>
+		<input type="submit" value="上传"/>
+	</form>
+	<p>----------------------------</p>
+	<form action="/test/uploads" method="post" enctype="multipart/form-data">
+		<input type="file" name="files">
+		<input type="file" name="files">
+		<button type="submit">上传</button>
+	</form>
+	
+	<p>----------------------------</p>
 	<h1>th:text</h1>
 	<h2 th:text="${text1}"></h2>
 	<p th:text="${text1}"></p>
