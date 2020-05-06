@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.Result;
-import com.hqyj.common.SearchVo;
 import com.hqyj.modules.account.pojo.User;
 import com.hqyj.modules.account.service.UserService;
+import com.hqyj.modules.common.vo.Result;
+import com.hqyj.modules.common.vo.SearchVo;
 
 @RestController
 @RequestMapping("/api")

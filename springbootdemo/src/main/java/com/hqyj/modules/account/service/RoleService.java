@@ -3,9 +3,9 @@ package com.hqyj.modules.account.service;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.Result;
-import com.hqyj.common.SearchVo;
 import com.hqyj.modules.account.pojo.Role;
+import com.hqyj.modules.common.vo.Result;
+import com.hqyj.modules.common.vo.SearchVo;
 
 public interface RoleService {
 

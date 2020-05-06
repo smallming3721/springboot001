@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.hqyj.common.SearchVo;
 import com.hqyj.modules.account.pojo.Role;
+import com.hqyj.modules.common.vo.SearchVo;
 
 @Mapper
 public interface RoleMapper {

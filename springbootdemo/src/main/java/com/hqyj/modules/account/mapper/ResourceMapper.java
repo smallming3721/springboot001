@@ -12,8 +12,8 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.hqyj.common.SearchVo;
 import com.hqyj.modules.account.pojo.Resource;
+import com.hqyj.modules.common.vo.SearchVo;
 
 @Mapper
 public interface ResourceMapper {

@@ -1,4 +1,4 @@
-package com.hqyj.common;
+package com.hqyj.modules.common.vo;
 
 public class Result<T> {
 

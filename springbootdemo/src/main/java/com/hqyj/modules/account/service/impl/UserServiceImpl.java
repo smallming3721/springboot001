@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.Result;
-import com.hqyj.common.Result.ResultStatus;
-import com.hqyj.common.SearchVo;
 import com.hqyj.modules.account.mapper.UserMapper;
 import com.hqyj.modules.account.mapper.UserRoleMapper;
 import com.hqyj.modules.account.pojo.Role;
 import com.hqyj.modules.account.pojo.User;
 import com.hqyj.modules.account.service.UserService;
+import com.hqyj.modules.common.vo.Result;
+import com.hqyj.modules.common.vo.SearchVo;
+import com.hqyj.modules.common.vo.Result.ResultStatus;
 import com.hqyj.util.MD5Util;
 
 @Service
@@ -143,6 +143,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public Result<User> deleteUser(int userId) {
 		userMapper.deleteUser(userId);
+		userRoleMapper.deletUserRoleByUserId(userId);
 		return new Result<User>(ResultStatus.SUCCESS.status, "");
 	}
 

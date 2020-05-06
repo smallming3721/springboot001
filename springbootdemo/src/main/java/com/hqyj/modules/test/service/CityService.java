@@ -3,7 +3,7 @@ package com.hqyj.modules.test.service;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.Result;
+import com.hqyj.modules.common.vo.Result;
 import com.hqyj.modules.test.pojo.City;
 import com.hqyj.modules.test.pojo.Country;
 

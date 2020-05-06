@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.Result;
+import com.hqyj.modules.common.vo.Result;
 import com.hqyj.modules.test.pojo.City;
 import com.hqyj.modules.test.service.CityService;
 

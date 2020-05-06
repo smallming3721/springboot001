@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.Result;
-import com.hqyj.common.Result.ResultStatus;
+import com.hqyj.modules.common.vo.Result;
+import com.hqyj.modules.common.vo.Result.ResultStatus;
 import com.hqyj.modules.test.mapper.CityMapper;
 import com.hqyj.modules.test.pojo.City;
 import com.hqyj.modules.test.service.CityService;

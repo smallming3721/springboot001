@@ -1,4 +1,4 @@
-package com.hqyj.common;
+package com.hqyj.modules.common.vo;
 
 public class SearchVo {
 	public final static int DEFAULT_CURRENT_PAGE = 1;
