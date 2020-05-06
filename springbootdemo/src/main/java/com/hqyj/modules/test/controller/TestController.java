@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hqyj.modules.account.service.UserService;
 import com.hqyj.modules.test.service.CityService;
-import com.hqyj.modules.test.service.UserService;
 
 @Controller
 @RequestMapping("/test")
@@ -123,7 +124,7 @@ public class TestController {
 		map.addAttribute("checkbox", "checkbox");
 		map.addAttribute("bdUrl", "http://www.baidu.com");
 		map.addAttribute("imgurl", "https://himg.bdimg.com/sys/portrait/hotitem/wildkid/2");
-		map.addAttribute("user",userServiceImpl.selUserAll().get(0) );
+//		map.addAttribute("user",userServiceImpl );
 		map.addAttribute("city",cityServiceImpl.selCitiesByCountryId(522).get(0) );
 		map.addAttribute("updateCityUri","/api/city/test" );
 		map.addAttribute("cities",cityServiceImpl.selCitiesByCountryId(522).
@@ -143,4 +144,13 @@ public class TestController {
 		return "testFilter---"+string+"---"+key;
 	}
 
+	@RequestMapping("/test")
+	public String test(HttpServletRequest req){
+		ArrayList<Object> list = new ArrayList<>();
+		list.add("测试1");
+		list.add("测试2");
+		list.add("测试3");
+		req.setAttribute("list", list );
+		return "table.html";
+	}
 }

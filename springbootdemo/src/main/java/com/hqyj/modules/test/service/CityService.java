@@ -3,7 +3,7 @@ package com.hqyj.modules.test.service;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.MyResult;
+import com.hqyj.common.Result;
 import com.hqyj.modules.test.pojo.City;
 import com.hqyj.modules.test.pojo.Country;
 
@@ -18,9 +18,9 @@ public interface CityService {
 	PageInfo<City> selPageCitiesByCountryId
 		(int currentPage,int pageSize,int countryId);
 	
-	MyResult<City> insCity(City city);
+	Result<City> insCity(City city);
 	
-	MyResult<City> updCity(City city);
+	Result<City> updCity(City city);
 	
-	MyResult<Object> delCity(int cityId);
+	Result<Object> delCity(int cityId);
 }

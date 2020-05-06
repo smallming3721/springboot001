@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.MyResult;
-import com.hqyj.common.MyResult.ResultEnum;
+import com.hqyj.common.Result;
+import com.hqyj.common.Result.ResultStatus;
 import com.hqyj.modules.test.mapper.CityMapper;
 import com.hqyj.modules.test.pojo.City;
 import com.hqyj.modules.test.service.CityService;
@@ -27,7 +27,6 @@ public class CityServiceImpl implements CityService {
 	
 	@Override
 	public PageInfo<City> selPageCitiesByCountryId(int currentPage, int pageSize, int countryId) {
-		System.out.println(pageSize);
 		PageHelper.startPage(currentPage, pageSize);
 		List<City> list = cityMapper.selCitiesByCountryId(countryId);
 		return new PageInfo<City>(list);
@@ -40,26 +39,26 @@ public class CityServiceImpl implements CityService {
 	}
 	
 	@Override
-	public MyResult<City> insCity(City city) { 
-		MyResult<City> mr=null;
+	public Result<City> insCity(City city) { 
+		Result<City> mr=null;
 		try{
 			cityMapper.insCity(city);
-			mr=new MyResult<City>(ResultEnum.SUCCESS.status,"insert success!!",city);
+			mr=new Result<City>(ResultStatus.SUCCESS.status,"insert success!!",city);
 		}catch(Exception e){
-			mr=new MyResult<City>(ResultEnum.FAILD.status,e.getMessage());
+			mr=new Result<City>(ResultStatus.FAILED.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return mr;
 	}
 
 	@Override
-	public MyResult<City> updCity(City city) {
-		MyResult<City> mr=null;
+	public Result<City> updCity(City city) {
+		Result<City> mr=null;
 		try{
 			cityMapper.updCity(city);
-			mr=new MyResult<City>(ResultEnum.SUCCESS.status,"update success!!",city);
+			mr=new Result<City>(ResultStatus.SUCCESS.status,"update success!!",city);
 		}catch(Exception e){
-			mr=new MyResult<City>(ResultEnum.FAILD.status,e.getMessage());
+			mr=new Result<City>(ResultStatus.FAILED.status,e.getMessage());
 			e.printStackTrace();
 		}
 		return mr;
@@ -67,8 +66,8 @@ public class CityServiceImpl implements CityService {
 
 	@Override
 	@Transactional(noRollbackFor=ArithmeticException.class)
-	public MyResult<Object> delCity(int cityId) {
-		MyResult<Object> mr=new MyResult<Object>(ResultEnum.SUCCESS.status,"delete success!!");
+	public Result<Object> delCity(int cityId) {
+		Result<Object> mr=new Result<Object>(ResultStatus.SUCCESS.status,"delete success!!");
 		cityMapper.delCity(cityId);
 		//int i=1/0;
 		return mr;

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
-import com.hqyj.common.MyResult;
+import com.hqyj.common.Result;
 import com.hqyj.modules.test.pojo.City;
 import com.hqyj.modules.test.service.CityService;
 
@@ -58,7 +58,7 @@ public class CityController {
 	 * {"cityId":"1","cityName":"test1","countryId":"522"}
 	 */
 	@PostMapping(value="/city", consumes="application/json")
-	public MyResult<City> insCity(@RequestBody City city){
+	public Result<City> insCity(@RequestBody City city){
 		return cityServiceImpl.insCity(city);
 	}
 	
@@ -68,7 +68,7 @@ public class CityController {
 	 * @ModelAttribute （默认？？）不写也能接受参数？？？
 	 */
 	@PutMapping(value="/city",consumes="application/x-www-form-urlencoded")
-	public  MyResult<City> updCity(City city){
+	public  Result<City> updCity(City city){
 		return cityServiceImpl.updCity(city);
 	}
 	
@@ -77,7 +77,7 @@ public class CityController {
 	 * 测试用的，post接收参数修改数据
 	 */
 	@PostMapping("/city/test")
-	public  MyResult<City> updCitytest(City city){
+	public  Result<City> updCitytest(City city){
 		return cityServiceImpl.updCity(city);
 	}
 	
@@ -85,7 +85,7 @@ public class CityController {
 	 * http://127.0.0.1/api/city/2261
 	 */
 	@DeleteMapping(value="/city/{cityId}")
-	public  MyResult<Object> delCity(@PathVariable int cityId){
+	public  Result<Object> delCity(@PathVariable int cityId){
 		return cityServiceImpl.delCity(cityId);
 	}
 	
